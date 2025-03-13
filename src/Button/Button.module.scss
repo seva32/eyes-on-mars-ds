@@ -1,0 +1,79 @@
+@use '../styles/variables' as vars;
+
+.button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    &.default {
+        background-color: vars.$color-lily;
+        color: vars.$color-dark-grey;
+        border: 1px solid vars.$color-dark-grey;
+
+        &:hover {
+            background-color: vars.$color-lily;
+            color: vars.$color-black;
+            border-color: vars.$color-black;
+        }
+    }
+
+    &.primary {
+        background-color: vars.$color-dark-blue;
+        color: vars.$color-white;
+        border: 1px solid vars.$color-dark-blue;
+
+        &:hover {
+            background-color: vars.$color-navy;
+            color: vars.$color-white;
+            border-color: vars.$color-white;
+        }
+    }
+
+    &.secondary {
+        background-color: vars.$color-white;
+        color: vars.$color-dark-blue;
+        border: 1px solid vars.$color-dark-blue;
+
+        &:hover {
+            background-color: vars.$color-light-blue;
+            color: vars.$color-dark-blue;
+            border-color: vars.$color-dark-blue;
+        }
+    }
+
+    &.link {
+        background-color: transparent !important;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+
+        &.default {
+            color: vars.$color-dark-grey;
+
+            &:hover {
+                color: vars.$color-black;
+            }
+        }
+
+        &.primary {
+            color: vars.$color-dark-blue;
+
+            &:hover {
+                color: vars.$color-navy;
+            }
+        }
+
+        &.secondary {
+            color: vars.$color-dark-blue;
+
+            &:hover {
+                color: vars.$color-light-blue;
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "eyes-on-mars-ds",
+  "version": "0.0.1",
+  "description": "Design system for Eyes on Mars app",
+  "author": "Sebs Fantini",
+  "license": "MIT",
+  "private": false,
+  "main": "dist/eom-design-system.umd.js",
+  "module": "dist/eom-design-system.es.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seva32/eyes-on-mars-ds.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "scripts": {
+    "start": "ladle serve",
+    "build": "ladle build",
+    "preview": "ladle preview",
+    "build:prod": "vite build",
+    "prepublishOnly": "yarn run build:prod",
+    "pack": "yarn pack"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@ladle/react": "^5.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sass-embedded": "^1.85.1",
+    "typescript": "^5.8.2",
+    "vite-plugin-dts": "^4.5.3"
+  }
+}
