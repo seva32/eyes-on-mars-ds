@@ -17,7 +17,8 @@ type ButtonType = "submit" | "button" | "link";
  * @property {ButtonType} type - The type of the button. Can be 'submit', 'button', or 'link'.
  * @property {string} href - The URL to navigate to when the button is of type 'link'.
  */
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
   variant?: Variant;
   type?: ButtonType;
   href?: string;
@@ -34,14 +35,20 @@ const Button: React.FC<ButtonProps> = ({
 
   if (type === "link" && href) {
     return (
-      <a href={href} className={`${styles.link} ${className || ""}`.trim()} {...props}>
+      <a href={href} className={`${styles.link} ${className || ""}`.trim()}>
         {children}
       </a>
     );
   }
 
+  const parsedType = type === "link" ? "button" : type;
+
   return (
-    <button type={type} className={`${className || ""}`.trim()} {...props}>
+    <button
+      type={parsedType}
+      className={`${className || ""}`.trim()}
+      {...props}
+    >
       {children}
     </button>
   );
