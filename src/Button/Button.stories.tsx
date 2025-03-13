@@ -4,11 +4,11 @@ import Button from "./Button";
 export const ButtonVariant = () => (
   <>
     <Button variant="default">Default Button</Button>
-    <div style={{ minHeigth: "1rem" }} />
+    <div style={{ minHeight: "1rem" }} />
     <Button variant="primary" type="submit">
       Primary Button
     </Button>
-    <div style={{ minHeigth: "1rem" }} />
+    <div style={{ minHeight: "1rem" }} />
     <Button variant="secondary" type="button">
       Secondary Button
     </Button>
