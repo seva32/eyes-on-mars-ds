@@ -15,17 +15,14 @@
   "files": [
     "dist"
   ],
-  "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
   "scripts": {
     "start": "ladle serve",
     "build": "ladle build",
     "preview": "ladle preview",
     "build:prod": "vite build",
     "prepublishOnly": "yarn run build:prod",
-    "pack": "yarn pack"
+    "pack": "yarn pack",
+    "test": "echo \"No tests available\" && exit 0"
   },
   "dependencies": {},
   "devDependencies": {
@@ -35,5 +32,9 @@
     "sass-embedded": "^1.85.1",
     "typescript": "^5.8.2",
     "vite-plugin-dts": "^4.5.3"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }
