@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, ButtonHTMLAttributes } from "react";
 import styles from "./Button.module.scss";
 
 /**
@@ -19,14 +19,14 @@ type ButtonType = "submit" | "button" | "link";
  * @property {boolean} disabled - Whether the button is disabled.
  */
 interface ButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
   variant?: Variant;
   type?: ButtonType;
   href?: string;
   disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   variant = "default",
   type = "button",
   href,

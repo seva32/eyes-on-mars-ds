@@ -1,8 +1,18 @@
-import { useState, DragEvent, MouseEvent } from "react";
+import { useState, DragEvent, MouseEvent, FC } from "react";
 import Button from "../Button/Button";
 
 import "./Dropzone.scss";
 
+/**
+ * Props for the Dropzone component.
+ * @property {function} handleAcceptUpload - Function to handle the acceptance of the uploaded file.
+ * @property {function} handleCancelUpload - Function to handle the cancellation of the upload.
+ * @property {object} [header] - Optional header object containing title and description.
+ * @property {string} [header.title] - Title for the header.
+ * @property {string} [header.description] - Description for the header.
+ * @property {string} [infoMessage] - Optional info message to display.
+ * @property {boolean} [savingImage] - Flag indicating if the image is being saved.
+ */
 interface EOMDropzoneProps {
   handleAcceptUpload: ({ file }: { file: File | null }) => void;
   handleCancelUpload: () => void;
@@ -11,28 +21,44 @@ interface EOMDropzoneProps {
   savingImage?: boolean;
 }
 
+/**
+ * Props for the handleFile function.
+ * @property {File} selectedFile - The selected file to handle.
+ */
 interface HandleFileProps {
   selectedFile: File;
 }
 
+/**
+ * Custom DropEvent interface extending DragEvent.
+ * @property {DataTransfer} dataTransfer - DataTransfer object containing the files.
+ */
 interface DropEvent extends DragEvent<HTMLDivElement> {
   dataTransfer: DataTransfer & {
     files: FileList;
   };
 }
 
-const Dropzone = ({
+/**
+ * Dropzone component for handling file uploads.
+ * @param {EOMDropzoneProps} props - Props for the Dropzone component.
+ * @returns {JSX.Element} The rendered Dropzone component.
+ */
+const Dropzone: FC<EOMDropzoneProps> = ({
   handleAcceptUpload,
   handleCancelUpload,
   header,
   infoMessage,
   savingImage,
-}: EOMDropzoneProps) => {
+}) => {
   const [file, setFile] = useState<File | null>(null);
   const [progress, setProgress] = useState(0);
   const [preview, setPreview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  /**
+   * Simulates the upload progress.
+   */
   const simulateUpload = () => {
     let progressValue = 0;
     const interval = setInterval(() => {
@@ -42,6 +68,10 @@ const Dropzone = ({
     }, 80);
   };
 
+  /**
+   * Handles the selected file.
+   * @param {HandleFileProps} param0 - Props containing the selected file.
+   */
   const handleFile = ({ selectedFile }: HandleFileProps) => {
     if (selectedFile) {
       const allowedTypes = ["image/png", "image/jpeg"];
@@ -90,6 +120,10 @@ const Dropzone = ({
     }
   };
 
+  /**
+   * Handles the removal of the selected file.
+   * @param {MouseEvent} event - The mouse event.
+   */
   const handleRemoveFile = (event: MouseEvent) => {
     event.stopPropagation();
     setFile(null);
@@ -102,6 +136,10 @@ const Dropzone = ({
     if (fileInput) fileInput.value = "";
   };
 
+  /**
+   * Handles the drop event.
+   * @param {DropEvent} event - The drop event.
+   */
   const handleDrop = (event: DropEvent) => {
     const selectedFile = event.dataTransfer.files[0];
 
