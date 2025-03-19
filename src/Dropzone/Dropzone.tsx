@@ -199,13 +199,11 @@ const Dropzone: FC<EOMDropzoneProps> = ({
             <span style={{ fontSize: "45px" }}>{Icon}</span>
             <div className="eom-dropzone_dropzone-text">
               <span>{dropzoneText}</span>
-              {error && (
-                <div>
-                  <span className="eom-dropzone_dropzone-text-bold">
-                    Select another file
-                  </span>
-                </div>
-              )}
+              <div>
+                <span className="eom-dropzone_dropzone-text-bold">
+                  {error ? "Select another file" : "choose a file"}
+                </span>
+              </div>
             </div>
             {!error && (
               <span className="eom-dropzone_dropzone-text-grey">
@@ -258,7 +256,6 @@ const Dropzone: FC<EOMDropzoneProps> = ({
         <Button
           variant="secondary"
           onClick={handleCancelUpload}
-          style={{ flex: 1 }}
           disabled={savingImage}
         >
           Cancel
@@ -266,7 +263,6 @@ const Dropzone: FC<EOMDropzoneProps> = ({
         <Button
           variant="primary"
           onClick={() => handleAcceptUpload({ file })}
-          style={{ flex: 1 }}
           disabled={savingImage}
         >
           {`Sav${savingImage ? "ing" : "e"} Image ${
