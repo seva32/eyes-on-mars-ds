@@ -75,4 +75,17 @@
             }
         }
     }
+
+    &.disabled {
+        background-color: vars.$color-light-grey;
+        color: vars.$color-dark-grey;
+        border: 1px solid vars.$color-dark-grey;
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: vars.$color-light-grey;
+            color: vars.$color-dark-grey;
+            border-color: vars.$color-dark-grey;
+        }
+    }
 }

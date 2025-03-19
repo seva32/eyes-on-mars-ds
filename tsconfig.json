@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "dist",
+    "lib": ["ESNext", "DOM"],
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "esModuleInterop": true,
