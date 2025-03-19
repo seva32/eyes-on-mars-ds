@@ -16,26 +16,35 @@ type ButtonType = "submit" | "button" | "link";
  * @property {Variant} variant - The variant of the button. Can be 'default', 'primary', or 'secondary'.
  * @property {ButtonType} type - The type of the button. Can be 'submit', 'button', or 'link'.
  * @property {string} href - The URL to navigate to when the button is of type 'link'.
+ * @property {boolean} disabled - Whether the button is disabled.
  */
 interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
   variant?: Variant;
   type?: ButtonType;
   href?: string;
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
   variant = "default",
   type = "button",
   href,
+  disabled = false,
   children,
   ...props
 }) => {
-  const className = `${styles.button} ${styles[variant]}`;
+  const className = `${styles.button} ${styles[variant]} ${
+    disabled ? styles.disabled : ""
+  }`;
 
   if (type === "link" && href) {
     return (
-      <a href={href} className={`${styles.link} ${className || ""}`.trim()}>
+      <a
+        href={href}
+        className={`${styles.link} ${className || ""}`.trim()}
+        aria-disabled={disabled}
+      >
         {children}
       </a>
     );
@@ -47,6 +56,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       type={parsedType}
       className={`${className || ""}`.trim()}
+      disabled={disabled}
       {...props}
     >
       {children}
