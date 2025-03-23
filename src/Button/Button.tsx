@@ -17,6 +17,7 @@ type ButtonType = "submit" | "button" | "link";
  * @property {ButtonType} type - The type of the button. Can be 'submit', 'button', or 'link'.
  * @property {string} href - The URL to navigate to when the button is of type 'link'.
  * @property {boolean} disabled - Whether the button is disabled.
+ * @property {boolean} label - Whether the button is disabled.
  */
 interface ButtonProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
@@ -24,6 +25,8 @@ interface ButtonProps
   type?: ButtonType;
   href?: string;
   disabled?: boolean;
+  label?: string;
+  bgColor?: CSSPropertyRule;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -32,6 +35,8 @@ const Button: FC<ButtonProps> = ({
   href,
   disabled = false,
   children,
+  label,
+  bgColor,
   ...props
 }) => {
   const className = `${styles.button} ${styles[variant]} ${
@@ -59,7 +64,7 @@ const Button: FC<ButtonProps> = ({
       disabled={disabled}
       {...props}
     >
-      {children}
+      {children || label || ""}
     </button>
   );
 };

@@ -1,0 +1,59 @@
+@use '../styles/variables' as vars;
+
+.eom-toast {
+  display: none;
+  width: 80%;
+  min-height: 38px;
+  border-radius: 2px;
+  padding: 10px 25px;
+  position: fixed;
+  z-index: 10;
+  left: 10%;
+  bottom: 80px;
+  align-items: center;
+  border-radius: 12px;
+  justify-content: space-between;
+
+  .eom-toast-text-container {
+    display: flex;
+  }
+
+  .eom-toast-text {
+    color: vars.$color-dark-grey;
+    font-weight: bold;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .eom-toast-close-button-container {
+    width: 12px;
+    display: flex;
+    align-items: center;
+
+    .eom-toast-close-button {
+      color: vars.$color-dark-grey;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 22px;
+      padding: 0;
+    }
+  }
+
+  .eom-toast-buttons {
+    white-space: nowrap;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
+.eom-toast.show {
+  display: flex;
+
+  &.with-children {
+    justify-content: flex-start;
+  }
+}
