@@ -24,7 +24,9 @@
     "pack": "yarn pack",
     "test": "echo \"No tests available\" && exit 0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "eyes-on-mars-ds": "^0.0.8"
+  },
   "devDependencies": {
     "@ladle/react": "^5.0.1",
     "react": "^19.0.0",
