@@ -16,20 +16,19 @@
         line-height: 1.43;
         font-size: 13px;
         min-width: 32px;
-        background-color: rgba(0, 0, 0, 0.02);
+        background-color: #f4f4f4;
 
         &.dots:hover {
-            background-color: transparent;
             cursor: default;
         }
 
         &:hover {
-            background-color: rgba(0, 0, 0, 0.04);
+            background-color: #d6d6d6;
             cursor: pointer;
         }
 
         &.selected {
-            background-color: rgba(0, 0, 0, 0.08);
+            background-color: #949494;
         }
 
         .arrow {
@@ -44,11 +43,11 @@
             }
 
             &.left {
-                transform: rotate(-135deg) translateY(0.5px);
+                transform: rotate(-135deg);
             }
 
             &.right {
-                transform: rotate(45deg) translateY(-1px);
+                transform: rotate(45deg);
             }
         }
 
@@ -61,8 +60,7 @@
             }
 
             &:hover {
-                background-color: transparent;
-                cursor: default;
+                cursor: not-allowed;
             }
         }
     }
