@@ -16,6 +16,7 @@
         line-height: 1.43;
         font-size: 13px;
         min-width: 32px;
+        background-color: rgba(0, 0, 0, 0.02);
 
         &.dots:hover {
             background-color: transparent;
@@ -43,11 +44,11 @@
             }
 
             &.left {
-                transform: rotate(-135deg) translate(-50%);
+                transform: rotate(-135deg) translateY(0.5px);
             }
 
             &.right {
-                transform: rotate(45deg);
+                transform: rotate(45deg) translateY(-1px);
             }
         }
 
