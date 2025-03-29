@@ -12,56 +12,31 @@
         box-sizing: border-box;
         align-items: center;
         letter-spacing: 0.01071em;
-        border-radius: 16px;
+        border-radius: 4px;
         line-height: 1.43;
         font-size: 13px;
         min-width: 32px;
-        background-color: #f4f4f4;
 
-        &.dots:hover {
-            cursor: default;
+        &.dots {
+            pointer-events: none;
+
+            &:hover {
+                cursor: default;
+            }
         }
 
         &:hover {
-            background-color: #d6d6d6;
+            filter: brightness(0.90);
             cursor: pointer;
         }
 
         &.selected {
-            background-color: #949494;
-        }
-
-        .arrow {
-            &::before {
-                position: relative;
-                content: "";
-                display: inline-block;
-                width: 0.4em;
-                height: 0.4em;
-                border-right: 0.12em solid rgba(0, 0, 0, 0.87);
-                border-top: 0.12em solid rgba(0, 0, 0, 0.87);
-            }
-
-            &.left {
-                transform: rotate(-135deg);
-            }
-
-            &.right {
-                transform: rotate(45deg);
-            }
+            filter: brightness(0.70);
         }
 
         &.disabled {
             pointer-events: none;
-
-            .arrow::before {
-                border-right: 0.12em solid rgba(0, 0, 0, 0.43);
-                border-top: 0.12em solid rgba(0, 0, 0, 0.43);
-            }
-
-            &:hover {
-                cursor: not-allowed;
-            }
+            cursor: not-allowed !important;
         }
     }
 }

@@ -1,71 +1,31 @@
-import { FC, ButtonHTMLAttributes } from "react";
-import styles from "./Button.module.scss";
+import React from "react";
+import "./Button.scss";
+import clsx from "clsx";
+
+type ButtonVariant = "primary" | "secondary" | "text" | "outline" | "filled";
+type ButtonSize = "xs" | "md" | "lg";
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  /** Determines the visual style of the button */
+  variant?: ButtonVariant;
+  /** Defines the size of the button */
+  size?: ButtonSize;
+};
 
 /**
- * Button variants.
+ * Reusable Button component with multiple variants and sizes.
  */
-type Variant = "default" | "primary" | "secondary";
-
-/**
- * Button types.
- */
-type ButtonType = "submit" | "button" | "link";
-
-/**
- * Button component props.
- * @property {Variant} variant - The variant of the button. Can be 'default', 'primary', or 'secondary'.
- * @property {ButtonType} type - The type of the button. Can be 'submit', 'button', or 'link'.
- * @property {string} href - The URL to navigate to when the button is of type 'link'.
- * @property {boolean} disabled - Whether the button is disabled.
- * @property {boolean} label - Whether the button is disabled.
- */
-interface ButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
-  variant?: Variant;
-  type?: ButtonType;
-  href?: string;
-  disabled?: boolean;
-  label?: string;
-  bgColor?: CSSPropertyRule;
-}
-
-const Button: FC<ButtonProps> = ({
-  variant = "default",
-  type = "button",
-  href,
-  disabled = false,
-  children,
-  label,
-  bgColor,
+const Button: React.FC<ButtonProps> = ({
+  variant = "primary",
+  size = "md",
+  className,
   ...props
 }) => {
-  const className = `${styles.button} ${styles[variant]} ${
-    disabled ? styles.disabled : ""
-  }`;
-
-  if (type === "link" && href) {
-    return (
-      <a
-        href={href}
-        className={`${styles.link} ${className || ""}`.trim()}
-        aria-disabled={disabled}
-      >
-        {children}
-      </a>
-    );
-  }
-
-  const parsedType = type === "link" ? "button" : type;
-
   return (
     <button
-      type={parsedType}
-      className={`${className || ""}`.trim()}
-      disabled={disabled}
+      className={`eom-button ${variant} ${size} ${className || ""}`.trim()}
       {...props}
-    >
-      {children || label || ""}
-    </button>
+    />
   );
 };
 

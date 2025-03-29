@@ -6,7 +6,7 @@ export default {
   title: "Pagination",
 } satisfies Meta;
 
-const totalPictures = 50;
+const totalPictures = 500;
 const pageSize = 10;
 const pictures = Array.from({ length: totalPictures }, (_, i) => ({
   id: i + 1,

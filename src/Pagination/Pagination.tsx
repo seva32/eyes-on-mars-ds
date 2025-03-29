@@ -10,6 +10,8 @@ interface IPagination {
   currentPage: number;
   pageSize: number;
   className: string;
+  bgColor?: string;
+  style?: React.CSSProperties;
 }
 
 const Pagination = ({
@@ -19,6 +21,8 @@ const Pagination = ({
   currentPage,
   pageSize,
   className,
+  bgColor = "#f4f4f4",
+  style,
 }: IPagination) => {
   const paginationRange = usePagination({
     currentPage,
@@ -53,14 +57,20 @@ const Pagination = ({
 
   let lastPage = paginationRange?.[paginationRange.length - 1];
 
+  const styleParsed = {
+    ...style,
+    backgroundColor: bgColor,
+  };
+
   return (
     <ul className={`eom-pagination-container ${className}`}>
       <li
         className={`eom-pagination-item ${currentPage === 1 ? "disabled" : ""}`}
         onClick={onPrevious}
         key={`${Math.random() * 10000}`}
+        style={styleParsed}
       >
-        <div className="arrow left" />
+        PREV
       </li>
       {paginationRange?.length &&
         paginationRange.map((pageNumber) => {
@@ -69,6 +79,7 @@ const Pagination = ({
               <li
                 className="eom-pagination-item dots"
                 key={`${Math.random() * 10000}`}
+                style={styleParsed}
               >
                 &#8230;
               </li>
@@ -82,6 +93,7 @@ const Pagination = ({
               }`}
               onClick={() => onPageChange(pageNumber)}
               key={`${Math.random() * 10000}`}
+              style={styleParsed}
             >
               {pageNumber}
             </li>
@@ -93,8 +105,9 @@ const Pagination = ({
         }`}
         onClick={onNext}
         key={`${Math.random() * 10000}`}
+        style={styleParsed}
       >
-        <div className="arrow right" />
+        NEXT
       </li>
     </ul>
   );

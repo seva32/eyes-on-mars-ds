@@ -1,0 +1,21 @@
+.eom-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.rounded {
+        border-radius: 50%;
+    }
+
+    &.squared {
+        border-radius: 4px;
+    }
+
+    &:hover {
+        filter: brightness(0.85);
+    }
+}

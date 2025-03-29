@@ -1,3 +1,5 @@
+@use '../styles/variables' as vars;
+
 .eom-dropzone-container {
     display: flex;
     flex-direction: column;
@@ -40,15 +42,13 @@
     width: 100%;
     max-width: 400px;
     height: 200px;
-    border: 2px dashed #76b1c0;
-    background-color: #edf3f5;
     padding: 1rem;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
 
     &:hover {
-        background-color: #e0eef1;
+        filter: brightness(0.95);
     }
 
     &-text {
